@@ -1,4 +1,4 @@
-package com.cu.unittest.stub;
+package com.cu.unittest.user;
 
 import org.springframework.stereotype.Service;
 
@@ -22,5 +22,9 @@ public class EmployeeService {
             updatedEmployee.setSalary(employee.getSalary() + 5000);
             return updatedEmployee;
         }).toList();
+    }
+
+    public List<Employee> getAll(){
+        return repository.findAllEmployee();
     }
 }

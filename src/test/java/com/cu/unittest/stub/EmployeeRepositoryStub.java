@@ -1,5 +1,8 @@
 package com.cu.unittest.stub;
 
+import com.cu.unittest.user.Employee;
+import com.cu.unittest.user.EmployeeRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 

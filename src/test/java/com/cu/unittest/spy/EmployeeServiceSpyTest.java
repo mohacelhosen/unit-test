@@ -1,7 +1,7 @@
 package com.cu.unittest.spy;
 
-import com.cu.unittest.stub.Employee;
-import com.cu.unittest.stub.EmployeeService;
+import com.cu.unittest.user.Employee;
+import com.cu.unittest.user.EmployeeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

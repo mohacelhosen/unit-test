@@ -1,7 +1,7 @@
 package com.cu.unittest.spy;
 
-import com.cu.unittest.stub.Employee;
-import com.cu.unittest.stub.EmployeeRepository;
+import com.cu.unittest.user.Employee;
+import com.cu.unittest.user.EmployeeRepository;
 
 import java.util.ArrayList;
 import java.util.List;

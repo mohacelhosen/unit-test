@@ -1,4 +1,4 @@
-package com.cu.unittest.stub;
+package com.cu.unittest.user;
 
 import org.springframework.stereotype.Repository;
 
