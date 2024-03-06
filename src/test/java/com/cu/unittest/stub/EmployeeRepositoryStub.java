@@ -5,6 +5,7 @@ import com.cu.unittest.user.EmployeeRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class EmployeeRepositoryStub implements EmployeeRepository {
 
@@ -29,5 +30,10 @@ public class EmployeeRepositoryStub implements EmployeeRepository {
         employeeList.add(new Employee(1010, "Alex", "male", 28, "Frontend Developer", 2.5, 32000));
 
         return employeeList;
+    }
+
+    @Override
+    public Optional<Employee> findById(Integer id) {
+        return Optional.empty();
     }
 }

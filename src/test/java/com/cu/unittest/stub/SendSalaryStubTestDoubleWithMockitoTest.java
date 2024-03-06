@@ -1,31 +1,36 @@
-package com.cu.unittest.spy;
+package com.cu.unittest.stub;
 
 import com.cu.unittest.user.Employee;
 import com.cu.unittest.user.EmployeeRepository;
+import com.cu.unittest.user.SendSalary;
+import com.cu.unittest.util.EmailService;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public class EmployeeRepositorySpy implements EmployeeRepository {
-    List<Employee> employeeList = new ArrayList<>();
-    int saveMethodCall = 0;
-    Employee lastAdded = null;
-    @Override
-    public void saveEmployee(Employee employee) {
-        employeeList.add(employee);
-        saveMethodCall++;
-        lastAdded= new Employee(employee);
-    }
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    public void reset() {
-        employeeList.clear();
-        saveMethodCall = 0;
-        lastAdded = null;
-    }
+@ExtendWith(MockitoExtension.class)
+public class SendSalaryStubTestDoubleWithMockitoTest {
 
-    @Override
-    public List<Employee> findAllEmployee() {
+    @InjectMocks
+    private SendSalary salary;
+
+    @Mock
+    private EmailService emailService;
+    @Mock
+    private EmployeeRepository employeeRepository;
+
+    @Test
+    public void testTotalSalaryNeedToPay() {
+
+        List<Employee> employeeList = new ArrayList<>();
         // Create 10 employee instances for testing using new keyword
         employeeList.add(new Employee(1001, "Mohacel", "male", 23, "Backend Developer", 2.6, 28000));
         employeeList.add(new Employee(1002, "John", "male", 30, "Frontend Developer", 3.0, 30000));
@@ -38,11 +43,9 @@ public class EmployeeRepositorySpy implements EmployeeRepository {
         employeeList.add(new Employee(1009, "Sophia", "female", 31, "Backend Developer", 3.0, 27000));
         employeeList.add(new Employee(1010, "Alex", "male", 28, "Frontend Developer", 2.5, 32000));
 
-        return employeeList;
-    }
+        Mockito.when(employeeRepository.findAllEmployee()).thenReturn(employeeList);
 
-    @Override
-    public Optional<Employee> findById(Integer id) {
-        return Optional.empty();
+        Double totalSalaryNeedToPay = salary.totalSalaryNeedToPay();
+        assertEquals(302000.00, totalSalaryNeedToPay);
     }
 }

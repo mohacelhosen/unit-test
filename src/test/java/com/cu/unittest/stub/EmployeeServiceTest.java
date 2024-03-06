@@ -21,4 +21,5 @@ public class EmployeeServiceTest {
         assertEquals(34000, salaryIncrease.get(2).getSalary());
         assertEquals(32000, salaryIncrease.get(3).getSalary());
     }
+
 }
